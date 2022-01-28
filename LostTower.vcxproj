@@ -158,6 +158,7 @@
     <ClCompile Include="KTEngine\Input\KeyListener.cpp" />
     <ClCompile Include="KTEngine\Util\stb_image.cpp" />
     <ClCompile Include="KTEngine\Window.cpp" />
+    <ClCompile Include="LostTower\Scene\LevelScene.cpp" />
     <ClCompile Include="LT_main.cpp" />
     <ClCompile Include="KTEngine\Input\MouseListener.cpp" />
   </ItemGroup>
@@ -467,6 +468,7 @@
     <ClInclude Include="KTEngine\Util\k_print.h" />
     <ClInclude Include="KTEngine\Window.h" />
     <ClInclude Include="KTEngine\Input\MouseListener.h" />
+    <ClInclude Include="LostTower\Scene\LevelScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="ExternalLibs\GLFW\lib\glfw3.lib" />
