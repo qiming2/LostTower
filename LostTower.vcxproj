@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="KTEngine\Scene\DefaultScene.cpp" />
     <ClCompile Include="ExternalLibs\GLAD\src\glad.c" />
     <ClCompile Include="ExternalLibs\GLM\glm\detail\glm.cpp" />
     <ClCompile Include="ExternalLibs\IMGUI\imgui.cpp" />
@@ -158,11 +159,14 @@
     <ClCompile Include="KTEngine\Input\KeyListener.cpp" />
     <ClCompile Include="KTEngine\Util\stb_image.cpp" />
     <ClCompile Include="KTEngine\Window.cpp" />
+    <ClCompile Include="KTEngine\Scene\LevelEditor.cpp" />
     <ClCompile Include="LostTower\Scene\LevelScene.cpp" />
     <ClCompile Include="LT_main.cpp" />
     <ClCompile Include="KTEngine\Input\MouseListener.cpp" />
+    <ClCompile Include="KTEngine\Scene\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KTEngine\Scene\DefaultScene.h" />
     <ClInclude Include="ExternalLibs\GLAD\include\glad\glad.h" />
     <ClInclude Include="ExternalLibs\GLAD\include\KHR\khrplatform.h" />
     <ClInclude Include="ExternalLibs\GLFW\include\glfw3.h" />
@@ -462,13 +466,16 @@
     <ClInclude Include="ExternalLibs\IMGUI\imstb_textedit.h" />
     <ClInclude Include="ExternalLibs\IMGUI\imstb_truetype.h" />
     <ClInclude Include="ExternalLibs\STB\stb_image.h" />
+    <ClInclude Include="KTEngine\Scene\Scene.h" />
     <ClInclude Include="KTEngine\Util\FileUtil.h" />
     <ClInclude Include="KTEngine\Input\KeyListener.h" />
     <ClInclude Include="KTEngine\Util\Common.h" />
     <ClInclude Include="KTEngine\Util\k_print.h" />
     <ClInclude Include="KTEngine\Window.h" />
     <ClInclude Include="KTEngine\Input\MouseListener.h" />
+    <ClInclude Include="KTEngine\Scene\LevelEditor.h" />
     <ClInclude Include="LostTower\Scene\LevelScene.h" />
+    <ClInclude Include="KTEngine\Scene\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="ExternalLibs\GLFW\lib\glfw3.lib" />

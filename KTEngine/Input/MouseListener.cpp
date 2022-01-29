@@ -21,7 +21,7 @@ void MouseListener::mouseCallback(GLFWwindow* window, double xpos, double ypos)
 	getInstance()->yPos = ypos;
 
 	// Only check if left or right mouse are dragging
-	getInstance()->isDragging = getInstance()->mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) || getInstance()->mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT);
+	getInstance()->isDragging = getInstance()->isMouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) || getInstance()->isMouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT);
 }
 
 void MouseListener::mouseButtonCallback(GLFWwindow* window, int button, int action, int mods)
@@ -33,7 +33,7 @@ void MouseListener::mouseButtonCallback(GLFWwindow* window, int button, int acti
 	}
 	else {
 		listener->mouseButtons[button] = false;
-		if (!getInstance()->mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && !getInstance()->mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
+		if (!getInstance()->isMouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && !getInstance()->isMouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
 			listener->isDragging = false;
 		}
 	}
@@ -90,7 +90,7 @@ bool MouseListener::dragging()
 	return getInstance()->isDragging;
 }
 
-bool MouseListener::mouseButtonDown(int button)
+bool MouseListener::isMouseButtonDown(int button)
 {
 	if (button < 0 || button > GLFW_MOUSE_BUTTON_LAST) {
 		ekp("UNKNOWN BUTTON: ", button);

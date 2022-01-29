@@ -16,7 +16,7 @@ public:
 	static float getScrollX();
 	static float getScrollY();
 	static bool dragging();
-	static bool mouseButtonDown(int button);
+	static bool isMouseButtonDown(int button);
 private:
 	MouseListener();
 	double scrollX, scrollY;

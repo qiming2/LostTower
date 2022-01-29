@@ -3,7 +3,6 @@
 #include "KTEngine/Window.h"
 
 int main() {
-	Ref<Window> window = Window::getInstance();
-	window->run();
+	Window::run();
 	return EXIT_SUCCESS;
 }

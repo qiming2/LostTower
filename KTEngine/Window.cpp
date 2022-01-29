@@ -3,6 +3,8 @@
 #include "Input/MouseListener.h"
 #include "Input/KeyListener.h"
 #include "Util/FileUtil.h"
+#include "Scene/SceneManager.h"
+#include "Scene/DefaultScene.h"
 
 Ref<Window> Window::getInstance()
 {
@@ -83,6 +85,12 @@ void Window::init() {
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
 	ImGui_ImplOpenGL3_Init(glsl_version);
 
+	// System set up
+
+	// SceneManager Setup
+	SceneManager::registerScene<DefaultScene>("Default Scene");
+	SceneManager::changeScene("Default Scene");
+	SceneManager::getInstance()->registerScene<LevelEditor>("Level Editor Scene");
 }
 
 void Window::errorCallback(int error, const char* description) {
@@ -98,27 +106,32 @@ void Window::framebufferCallback(GLFWwindow* window, int width, int height)
 
 void Window::setWidth(int width)
 {
-	this->width = width;
+	getInstance()->width = width;
 }
 
 void Window::setHeight(int height)
 {
-	this->height = height;
+	getInstance()->height = height;
 }
 
 int Window::getWidth()
 {
-	return width;
+	return getInstance()->width;
 }
 
 int Window::getHeight()
 {
-	return height;
+	return getInstance()->height;
+}
+
+float Window::getFrameRate()
+{
+	return (float)(getInstance()->cur_time - getInstance()->prev_time);
 }
 
 void Window::run() {
-	loop();
-	close();
+	getInstance()->loop();
+	getInstance()->close();
 }
 
 void Window::loop () {
@@ -130,9 +143,28 @@ void Window::loop () {
 	
 
 		// Game Logic
+		SceneManager::update(dt);
+
+
 		if (KeyListener::isKeyPressed(GLFW_KEY_ESCAPE)) {
+			kp("Test test");
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
+		} 
+
+		if (KeyListener::isKeyPressed(GLFW_KEY_C)) {
+			// Test change scene
+			SceneManager::changeScene("Level Editor Scene");
+		} 
+
+		if (KeyListener::isKeyPressed(GLFW_KEY_D)) {
+			// Test change scene
+			SceneManager::changeScene("Default Scene");
 		}
+
+		if (MouseListener::isMouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+			/*kp("Test test");*/
+		}
+
 
 		// Rendering
 
@@ -140,15 +172,21 @@ void Window::loop () {
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
+
+		// Always showing demo window to learn more about imgui
+		// usage
 		if (show_demo_window)
 			ImGui::ShowDemoWindow(&show_demo_window);
 
-		{
+		/*{
 			ImGui::Begin("Hello Lost Tower!");
 			ImGui::ColorEdit3("Background Color", &bg_color[0]);
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", (float)dt * 1000.0f, 1.0f / dt);
 			ImGui::End();
-		}
+		}*/
+		
+		SceneManager::imgui();
+
 		ImGui::Render();
 		
 		
