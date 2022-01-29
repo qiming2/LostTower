@@ -42,5 +42,6 @@ void SceneManager::imgui()
 SceneManager::SceneManager()
     // default Scene : LevelEditor
 {
-	
+	// WARNING: can not change scene or register in SceneManager constructor
+    // unknown reason
 }

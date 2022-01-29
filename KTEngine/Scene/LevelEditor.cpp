@@ -4,7 +4,7 @@
 
 LevelEditor::LevelEditor()
 {
-	kp("Created");
+	
 }
 
 LevelEditor::LevelEditor(const std::string& name)
