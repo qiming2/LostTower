@@ -164,6 +164,9 @@
     <ClCompile Include="LT_main.cpp" />
     <ClCompile Include="KTEngine\Input\MouseListener.cpp" />
     <ClCompile Include="KTEngine\Scene\SceneManager.cpp" />
+    <ClCompile Include="KTEngine\Graphics\Texture.cpp" />
+    <ClCompile Include="KTEngine\Graphics\Shader.cpp" />
+    <ClCompile Include="KTEngine\Util\Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KTEngine\Scene\DefaultScene.h" />
@@ -476,6 +479,9 @@
     <ClInclude Include="KTEngine\Scene\LevelEditor.h" />
     <ClInclude Include="LostTower\Scene\LevelScene.h" />
     <ClInclude Include="KTEngine\Scene\SceneManager.h" />
+    <ClInclude Include="KTEngine\Graphics\Texture.h" />
+    <ClInclude Include="KTEngine\Graphics\Shader.h" />
+    <ClInclude Include="KTEngine\Util\Util.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="ExternalLibs\GLFW\lib\glfw3.lib" />

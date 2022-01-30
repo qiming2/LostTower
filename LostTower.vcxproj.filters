@@ -72,6 +72,15 @@
     <ClCompile Include="KTEngine\Scene\DefaultScene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="KTEngine\Graphics\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\Graphics\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\Util\Util.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KTEngine\Window.h">
@@ -1002,6 +1011,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KTEngine\Scene\DefaultScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\Graphics\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\Graphics\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\Util\Util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
