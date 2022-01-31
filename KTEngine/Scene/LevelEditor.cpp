@@ -1,10 +1,11 @@
 #include "LevelEditor.h"
 #include "IMGUI/imgui.h"
 #include "Window.h"
+#include "Graphics/Shader.h"
 
 LevelEditor::LevelEditor()
 {
-	
+	Shader test("KTEngine/Asset/Shader/default.glsl");
 }
 
 LevelEditor::LevelEditor(const std::string& name)

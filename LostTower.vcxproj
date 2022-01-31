@@ -626,6 +626,7 @@
     <None Include="ExternalLibs\GLM\glm\gtx\vector_angle.inl" />
     <None Include="ExternalLibs\GLM\glm\gtx\vector_query.inl" />
     <None Include="ExternalLibs\GLM\glm\gtx\wrap.inl" />
+    <None Include="KTEngine\Asset\Shader\default.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ExternalLibs\GLM\copying.txt" />

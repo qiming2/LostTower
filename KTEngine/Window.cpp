@@ -89,8 +89,8 @@ void Window::init() {
 
 	// SceneManager Setup
 	SceneManager::registerScene<DefaultScene>("Default Scene");
-	SceneManager::changeScene("Default Scene");
-	SceneManager::getInstance()->registerScene<LevelEditor>("Level Editor Scene");
+	SceneManager::registerScene<LevelEditor>("Level Editor Scene");
+	SceneManager::changeScene("Level Editor Scene");
 }
 
 void Window::errorCallback(int error, const char* description) {

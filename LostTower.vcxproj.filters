@@ -1444,6 +1444,7 @@
     <None Include="ExternalLibs\GLM\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="KTEngine\Asset\Shader\default.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="ExternalLibs\GLM\copying.txt" />

@@ -16,7 +16,7 @@ public:
 	void setf(const std::string& name, const float& f);
 	void set3fv(const std::string& name, const glm::mat3& m);
 	void set4fv(const std::string& name, const glm::mat4& m);
-	
+	std::string m_filePath;
 private:
 	unsigned int m_renderID;
 	std::vector<std::pair<std::string, int>> location_cache;
