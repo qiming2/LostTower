@@ -5,7 +5,7 @@
 
 LevelEditor::LevelEditor()
 {
-	Shader test("KTEngine/Asset/Shader/default.glsl");
+	
 }
 
 LevelEditor::LevelEditor(const std::string& name)

@@ -20,6 +20,7 @@ public:
 	static int getHeight();
 	static float getFrameRate();
 	static void run();
+	static float getTime();
 private:
 	int width, height;
 	std::string window_title;

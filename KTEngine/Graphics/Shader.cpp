@@ -1,6 +1,7 @@
 #include "Shader.h"
 #include "Util/FileUtil.h"
 #include "Util/Util.h"
+#include "GLM/gtc/type_ptr.hpp"
 
 Shader::Shader(const char* filepath):
 	m_filePath(filepath)
@@ -8,7 +9,7 @@ Shader::Shader(const char* filepath):
 	// Parse string
 	std::string code = FileUtil::readAll(filepath);
 	// type-delim is very important currently!
-	std::vector<std::string> shaders_s = Util::split(code, "#type-delim");
+	std::vector<std::string> shaders_s = Util::split(code, "#type - delim");
 
 	// create two shaders [0] is vertex and [1] is fragment shader
 	unsigned int vert = compileShader(shaders_s[0].c_str(), GL_VERTEX_SHADER);
@@ -38,38 +39,71 @@ Shader::Shader(const char* filepath):
 
 Shader::~Shader()
 {
+	glDeleteShader(m_renderID);
 }
 
 void Shader::bind()
 {
+	glUseProgram(m_renderID);
 }
 
 void Shader::unBind()
 {
+	glUseProgram(0);
 }
 
 void Shader::set3f(const std::string& name, const glm::vec3& v)
 {
+	int location;
+	if ((location = getLocation(name)) < 0) {
+		return;
+	}
+	glUniform3f(location, v[0], v[1], v[2]);
 }
 
 void Shader::set4f(const std::string& name, const glm::vec4& v)
 {
+	int location;
+	if ((location = getLocation(name)) < 0) {
+		return;
+	}
+	glUniform4f(location, v[0], v[1], v[2], v[3]);
 }
 
 void Shader::seti(const std::string& name, const int& i)
 {
+	int location;
+	if ((location = getLocation(name)) < 0) {
+		return;
+	}
+	glUniform1i(location, i);
 }
 
 void Shader::setf(const std::string& name, const float& f)
 {
+	int location;
+	if ((location = getLocation(name)) < 0) {
+		return;
+	}
+	glUniform1f(location, f);
 }
 
 void Shader::set3fv(const std::string& name, const glm::mat3& m)
 {
+	int location;
+	if ((location = getLocation(name)) < 0) {
+		return;
+	}
+	glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(m));
 }
 
 void Shader::set4fv(const std::string& name, const glm::mat4& m)
 {
+	int location;
+	if ((location = getLocation(name)) < 0) {
+		return;
+	}
+	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(m));
 }
 
 unsigned int Shader::compileShader(const char* code, unsigned int type)

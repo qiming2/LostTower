@@ -90,7 +90,7 @@ void Window::init() {
 	// SceneManager Setup
 	SceneManager::registerScene<DefaultScene>("Default Scene");
 	SceneManager::registerScene<LevelEditor>("Level Editor Scene");
-	SceneManager::changeScene("Level Editor Scene");
+	SceneManager::changeScene("Default Scene");
 }
 
 void Window::errorCallback(int error, const char* description) {
@@ -134,27 +134,38 @@ void Window::run() {
 	getInstance()->close();
 }
 
+float Window::getTime()
+{
+	return glfwGetTime();
+}
+
 void Window::loop () {
 	static bool show_demo_window = true;
 	float dt = 0.0f;
+
+	// GL_DEPTH_BUFFERE_BIT also needs to be cleared!
+	glEnable(GL_DEPTH_TEST);
 	while (!glfwWindowShouldClose(window)) {
 		dt = (float)(cur_time - prev_time);
-		
-	
+		// ImGui Rendering
+		// glClear needs to come before everything!
+		glClearColor(bg_color[0], bg_color[1], bg_color[2], 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-		// Game Logic
-		SceneManager::update(dt);
+		ImGui_ImplOpenGL3_NewFrame();
+		ImGui_ImplGlfw_NewFrame();
+		ImGui::NewFrame();
 
-
+		// processInput before game
 		if (KeyListener::isKeyPressed(GLFW_KEY_ESCAPE)) {
 			kp("Test test");
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
-		} 
+		}
 
 		if (KeyListener::isKeyPressed(GLFW_KEY_C)) {
 			// Test change scene
 			SceneManager::changeScene("Level Editor Scene");
-		} 
+		}
 
 		if (KeyListener::isKeyPressed(GLFW_KEY_D)) {
 			// Test change scene
@@ -165,34 +176,33 @@ void Window::loop () {
 			/*kp("Test test");*/
 		}
 
+		// Game Logic
+		SceneManager::update(dt);
+
+
+
 
 		// Rendering
 
-		// ImGui Rendering
-		ImGui_ImplOpenGL3_NewFrame();
-		ImGui_ImplGlfw_NewFrame();
-		ImGui::NewFrame();
+		
 
 		// Always showing demo window to learn more about imgui
 		// usage
 		if (show_demo_window)
 			ImGui::ShowDemoWindow(&show_demo_window);
 
-		/*{
-			ImGui::Begin("Hello Lost Tower!");
+		{
+			/*ImGui::Begin("Hello Lost Tower!");
 			ImGui::ColorEdit3("Background Color", &bg_color[0]);
 			ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", (float)dt * 1000.0f, 1.0f / dt);
-			ImGui::End();
-		}*/
+			ImGui::End();*/
+		}
 		
 		SceneManager::imgui();
+		
 
+		// ImGui Render needs to be after glClearColor();
 		ImGui::Render();
-		
-		
-		// clear color
-		glClearColor(bg_color[0], bg_color[1], bg_color[2], 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT);
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		// swap buffer
 		glfwSwapBuffers(window);
@@ -200,6 +210,7 @@ void Window::loop () {
 		prev_time = cur_time;
 		cur_time = glfwGetTime();
 	}
+
 }
 
 void Window::close() {
