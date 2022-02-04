@@ -20,10 +20,13 @@ bool GLLogCall(const char* function, const char* file, int line)
 	}
 	return true;
 }
+#ifdef K_DEBUG
 #define GLCall(x) GLClearError();\
     x;\
     ASSERT(GLLogCall(#x, __FILE__, __LINE__))
-
+#else
+#define GLCall(x) x;
+#endif
 ///////////////////////////////////////////////////////////////////////////////
 
 DefaultScene::DefaultScene()
@@ -62,7 +65,7 @@ DefaultScene::DefaultScene()
 	shader = std::make_shared<Shader>("KTEngine/Asset/Shader/default.glsl");
 
 	int id = 2;
-	tex = std::make_shared<Texture>("KTEngine/Asset/Image/GI/hutao_4k.jpg", id);
+	tex = std::make_shared<Texture>("KTEngine\\Asset\\Image\\GI\\hutao_4k.jpg", id);
 	shader->bind();
 	shader->seti("tex", id);
 	glBindVertexArray(0);
@@ -82,7 +85,8 @@ void DefaultScene::update(float dt)
 	
 	GLCall(glBindVertexArray(vao));
 	shader->bind();
-	//shader->setf("u_Time", Window::getTime());
+	shader->set2f("u_Resolution", Window::getWidth(), Window::getHeight());
+	shader->setf("u_Time", Window::getTime());
 	tex->bind();
 	GLCall(glDrawArrays(GL_TRIANGLES, 0, 6));
 }

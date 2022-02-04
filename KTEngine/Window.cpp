@@ -101,7 +101,7 @@ void Window::framebufferCallback(GLFWwindow* window, int width, int height)
 {
 	glViewport(0, 0, width, height);
 	Window::getInstance()->setHeight(height);
-	Window::getInstance()->setHeight(width);
+	Window::getInstance()->setWidth(width);
 }
 
 void Window::setWidth(int width)

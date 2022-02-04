@@ -56,6 +56,7 @@ void Shader::set3f(const std::string& name, const glm::vec3& v)
 {
 	int location;
 	if ((location = getLocation(name)) < 0) {
+		kp("UNIFORM::LOCATION::UNKNOWN\n", name);
 		return;
 	}
 	glUniform3f(location, v[0], v[1], v[2]);
@@ -65,15 +66,27 @@ void Shader::set4f(const std::string& name, const glm::vec4& v)
 {
 	int location;
 	if ((location = getLocation(name)) < 0) {
+		kp("UNIFORM::LOCATION::UNKNOWN\n", name);
 		return;
 	}
 	glUniform4f(location, v[0], v[1], v[2], v[3]);
+}
+
+void Shader::set2f(const std::string& name, const float& v0, const float& v1)
+{
+	int location;
+	if ((location = getLocation(name)) < 0) {
+		kp("UNIFORM::LOCATION::UNKNOWN\n", name);
+		return;
+	}
+	glUniform2f(location, v0, v1);
 }
 
 void Shader::seti(const std::string& name, const int& i)
 {
 	int location;
 	if ((location = getLocation(name)) < 0) {
+		kp("UNIFORM::LOCATION::UNKNOWN\n", name);
 		return;
 	}
 	glUniform1i(location, i);
@@ -83,6 +96,7 @@ void Shader::setf(const std::string& name, const float& f)
 {
 	int location;
 	if ((location = getLocation(name)) < 0) {
+		kp("UNIFORM::LOCATION::UNKNOWN\n", name);
 		return;
 	}
 	glUniform1f(location, f);
@@ -92,6 +106,7 @@ void Shader::set3fv(const std::string& name, const glm::mat3& m)
 {
 	int location;
 	if ((location = getLocation(name)) < 0) {
+		kp("UNIFORM::LOCATION::UNKNOWN\n", name);
 		return;
 	}
 	glUniformMatrix3fv(location, 1, GL_FALSE, glm::value_ptr(m));
@@ -101,6 +116,7 @@ void Shader::set4fv(const std::string& name, const glm::mat4& m)
 {
 	int location;
 	if ((location = getLocation(name)) < 0) {
+		kp("UNIFORM::LOCATION::UNKNOWN\n", name);
 		return;
 	}
 	glUniformMatrix4fv(location, 1, GL_FALSE, glm::value_ptr(m));
