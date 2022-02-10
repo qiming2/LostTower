@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>K_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ExternalLibs;$(SolutionDir)ExternalLibs\GLAD\include;$(SolutionDir)ExternalLibs\GLFW\include;$(SolutionDir)KTEngine\Util;$(SolutionDir)KTEngine;$(SolutionDir)ExternalLibs\GLM;$(SolutionDir)ExternalLibs\IMGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ExternalLibs;$(SolutionDir)ExternalLibs\GLAD\include;$(SolutionDir)ExternalLibs\GLFW\include;$(SolutionDir)KTEngine\Util;$(SolutionDir)KTEngine;$(SolutionDir)ExternalLibs\GLM;$(SolutionDir)ExternalLibs\IMGUI;$(SolutionDir)/LostTower;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>K_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ExternalLibs;$(SolutionDir)ExternalLibs\GLAD\include;$(SolutionDir)ExternalLibs\GLFW\include;$(SolutionDir)KTEngine\Util;$(SolutionDir)KTEngine;$(SolutionDir)ExternalLibs\GLM;$(SolutionDir)ExternalLibs\IMGUI;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ExternalLibs;$(SolutionDir)ExternalLibs\GLAD\include;$(SolutionDir)ExternalLibs\GLFW\include;$(SolutionDir)KTEngine\Util;$(SolutionDir)KTEngine;$(SolutionDir)ExternalLibs\GLM;$(SolutionDir)ExternalLibs\IMGUI;$(SolutionDir)/LostTower;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +145,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="KTEngine\Util\AssetPool.cpp" />
+    <ClCompile Include="KTEngine\GameObject.cpp" />
+    <ClCompile Include="KTEngine\Graphics\Camera.cpp" />
     <ClCompile Include="KTEngine\Scene\DefaultScene.cpp" />
     <ClCompile Include="ExternalLibs\GLAD\src\glad.c" />
     <ClCompile Include="ExternalLibs\GLM\glm\detail\glm.cpp" />
@@ -167,8 +170,14 @@
     <ClCompile Include="KTEngine\Graphics\Texture.cpp" />
     <ClCompile Include="KTEngine\Graphics\Shader.cpp" />
     <ClCompile Include="KTEngine\Util\Util.cpp" />
+    <ClCompile Include="KTEngine\Transform.cpp" />
+    <ClCompile Include="LostTower\Player.cpp" />
+    <ClCompile Include="LostTower\Monster.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KTEngine\Util\AssetPool.h" />
+    <ClInclude Include="KTEngine\GameObject.h" />
+    <ClInclude Include="KTEngine\Graphics\Camera.h" />
     <ClInclude Include="KTEngine\Scene\DefaultScene.h" />
     <ClInclude Include="ExternalLibs\GLAD\include\glad\glad.h" />
     <ClInclude Include="ExternalLibs\GLAD\include\KHR\khrplatform.h" />
@@ -482,6 +491,9 @@
     <ClInclude Include="KTEngine\Graphics\Texture.h" />
     <ClInclude Include="KTEngine\Graphics\Shader.h" />
     <ClInclude Include="KTEngine\Util\Util.h" />
+    <ClInclude Include="KTEngine\Transform.h" />
+    <ClInclude Include="LostTower\Player.h" />
+    <ClInclude Include="LostTower\Monster.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="ExternalLibs\GLFW\lib\glfw3.lib" />
@@ -632,9 +644,13 @@
     <Text Include="ExternalLibs\GLM\copying.txt" />
     <Text Include="ExternalLibs\IMGUI\LICENSE.txt" />
     <Text Include="ExternalLibs\STB\LICENSE.txt" />
+    <Text Include="KTEngine\Asset\Shader\background.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="KTEngine\Asset\Font\seguihis.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="LostTower\Asset\background_1.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -38,7 +38,7 @@ void Window::init() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	// Create a window
-	width = 2560;
+	width = 1920;
 	height = 1080;
 	window_title = "Lost Tower";
 	window = glfwCreateWindow(width, height, window_title.c_str(), nullptr, nullptr);
@@ -162,19 +162,16 @@ void Window::loop () {
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
 		}
 
-		if (KeyListener::isKeyPressed(GLFW_KEY_C)) {
-			// Test change scene
-			SceneManager::changeScene("Level Editor Scene");
-		}
+		//if (KeyListener::isKeyPressed(GLFW_KEY_C)) {
+		//	// Test change scene
+		//	SceneManager::changeScene("Level Editor Scene");
+		//}
 
-		if (KeyListener::isKeyPressed(GLFW_KEY_D)) {
-			// Test change scene
-			SceneManager::changeScene("Default Scene");
-		}
+		//if (KeyListener::isKeyPressed(GLFW_KEY_D)) {
+		//	// Test change scene
+		//	SceneManager::changeScene("Default Scene");
+		//}
 
-		if (MouseListener::isMouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
-			/*kp("Test test");*/
-		}
 
 		// Game Logic
 		SceneManager::update(dt);

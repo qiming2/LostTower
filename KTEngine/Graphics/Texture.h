@@ -5,6 +5,7 @@ class Texture
 {
 public:
 	Texture(const char* image, unsigned int activeID);
+	Texture(const char* image);
 	~Texture();
 	void setID(unsigned int activeID);
 	void bind();

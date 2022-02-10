@@ -11,3 +11,15 @@ std::vector<std::string> Util::split(std::string s, const std::string& delim)
 	ret.emplace_back(s);
 	return ret;
 }
+
+std::vector<float> Util::spriteQuad() {
+	return std::vector<float>{
+		-0.5f,  0.5f,  0.0f, 1.0f,
+		-0.5f, -0.5f,  0.0f, 0.0f,
+		 0.5f, -0.5f,  1.0f, 0.0f,
+
+		-0.5f,  0.5f,  0.0f, 1.0f,
+		 0.5f, -0.5f,  1.0f, 0.0f,
+		 0.5f,  0.5f,  1.0f, 1.0f
+	};
+}

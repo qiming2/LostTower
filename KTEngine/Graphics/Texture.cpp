@@ -1,14 +1,19 @@
 #include "Texture.h"
 #include "STB/stb_image.h"
 
-Texture::Texture(const char* image, unsigned int activeID)
+Texture::Texture(const char* image, unsigned int activeID):
+	Texture(image)
 {
 	m_activeID = activeID;
+}
+
+Texture::Texture(const char* image)
+{
 	glGenTextures(1, &m_renderID);
-	
+
 	// STB load image
 	int width, height, channel;
-	
+
 	// Flip since opengl has reversed y
 	stbi_set_flip_vertically_on_load(true);
 	unsigned char* data = stbi_load(image, &width, &height, &channel, 0);
@@ -16,12 +21,13 @@ Texture::Texture(const char* image, unsigned int activeID)
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
 
 	if (data) {
-		unsigned int channel_type = GL_RGB;
+		unsigned int channel_type = GL_RGBA;
 		if (channel == 1) {
 			channel_type = GL_RED;
 			glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 		}
 		else if (channel == 3) {
+			channel_type = GL_RGB;
 			glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 		}
@@ -45,7 +51,6 @@ Texture::Texture(const char* image, unsigned int activeID)
 	}
 	stbi_image_free(data);
 	unBind();
-	
 }
 
 Texture::~Texture()

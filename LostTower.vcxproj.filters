@@ -81,6 +81,24 @@
     <ClCompile Include="KTEngine\Util\Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="KTEngine\Graphics\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LostTower\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LostTower\Monster.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\Util\AssetPool.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KTEngine\Window.h">
@@ -1022,6 +1040,24 @@
     <ClInclude Include="KTEngine\Util\Util.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="KTEngine\Graphics\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LostTower\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LostTower\Monster.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\Util\AssetPool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Library Include="ExternalLibs\GLFW\lib\glfw3.lib" />
@@ -1450,8 +1486,14 @@
     <Text Include="ExternalLibs\GLM\copying.txt" />
     <Text Include="ExternalLibs\IMGUI\LICENSE.txt" />
     <Text Include="ExternalLibs\STB\LICENSE.txt" />
+    <Text Include="KTEngine\Asset\Shader\background.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="KTEngine\Asset\Font\seguihis.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="LostTower\Asset\background_1.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
