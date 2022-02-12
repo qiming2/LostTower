@@ -15,6 +15,7 @@ public:
 	void set2f(const std::string& name, const float& v0, const float& v1);
 	void setf(const std::string& name, const float& f);
 	void seti(const std::string& name, const int& i);
+	void setiArray(const std::string& name, const int& count, const int* i);
 	void set3fv(const std::string& name, const glm::mat3& m);
 	void set4fv(const std::string& name, const glm::mat4& m);
 	std::string m_filePath;

@@ -9,6 +9,7 @@ Texture::Texture(const char* image, unsigned int activeID):
 
 Texture::Texture(const char* image)
 {
+	m_activeID = 0;
 	glGenTextures(1, &m_renderID);
 
 	// STB load image
@@ -61,6 +62,11 @@ Texture::~Texture()
 void Texture::setID(unsigned int activeID)
 {
 	m_activeID = activeID;
+}
+
+unsigned int Texture::getID()
+{
+	return m_activeID;
 }
 
 void Texture::bind()

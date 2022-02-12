@@ -24,7 +24,8 @@ void main() {
 #version 460 core
 
 out vec4 out_color;
-uniform sampler2D tex;
+uniform sampler2D tex[8];
+uniform int texId;
 
 in VS_OUT{
 	vec2 pos;
@@ -32,7 +33,8 @@ in VS_OUT{
 } vs_in;
 
 void main() {
-	vec4 color = texture(tex, vs_in.uv);
+	vec4 color;
+	color = texture(tex[texId], vs_in.uv);
 	if (color.a < 0.01)
 		discard;
 	out_color = vec4(vec3(color), 1.0);

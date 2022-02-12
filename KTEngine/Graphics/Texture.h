@@ -8,6 +8,7 @@ public:
 	Texture(const char* image);
 	~Texture();
 	void setID(unsigned int activeID);
+	unsigned int getID();
 	void bind();
 	void unBind();
 private:

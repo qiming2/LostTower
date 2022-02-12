@@ -5,6 +5,7 @@
 #include "Util/FileUtil.h"
 #include "Scene/SceneManager.h"
 #include "Scene/DefaultScene.h"
+#include "Renderer.h"
 
 Ref<Window> Window::getInstance()
 {
@@ -136,7 +137,7 @@ void Window::run() {
 
 float Window::getTime()
 {
-	return glfwGetTime();
+	return (float)glfwGetTime();
 }
 
 void Window::loop () {
@@ -162,6 +163,7 @@ void Window::loop () {
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
 		}
 
+
 		//if (KeyListener::isKeyPressed(GLFW_KEY_C)) {
 		//	// Test change scene
 		//	SceneManager::changeScene("Level Editor Scene");
@@ -180,7 +182,7 @@ void Window::loop () {
 
 
 		// Rendering
-
+		Renderer::getInstance()->render();
 		
 
 		// Always showing demo window to learn more about imgui

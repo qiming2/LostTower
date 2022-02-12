@@ -92,6 +92,16 @@ void Shader::seti(const std::string& name, const int& i)
 	glUniform1i(location, i);
 }
 
+void Shader::setiArray(const std::string& name, const int& count, const int* i)
+{
+	int location;
+	if ((location = getLocation(name)) < 0) {
+		kp("UNIFORM::LOCATION::UNKNOWN\n", name);
+		return;
+	}
+	glUniform1iv(location, count, i);
+}
+
 void Shader::setf(const std::string& name, const float& f)
 {
 	int location;

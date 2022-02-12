@@ -3,6 +3,7 @@
 #include "Transform.h"
 #include "IMGUI/imgui.h"
 #include "Window.h"
+#include "Component.h"
 
 class GameObject
 {
@@ -14,9 +15,12 @@ public:
 	Transform transform;
 	std::string tag;
 	
-	virtual void update(float dt);
 
+	Ref<Component> getComponentByType(ComponentType type);
+	virtual void addComponent(Ref<Component> comp);
+	virtual void update(float dt);
 	virtual void imgui();
-	
+private:
+	std::vector<Ref<Component>> comps;
 };
 

@@ -116,7 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>K_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ExternalLibs;$(SolutionDir)ExternalLibs\GLAD\include;$(SolutionDir)ExternalLibs\GLFW\include;$(SolutionDir)KTEngine\Util;$(SolutionDir)KTEngine;$(SolutionDir)ExternalLibs\GLM;$(SolutionDir)ExternalLibs\IMGUI;$(SolutionDir)/LostTower;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ExternalLibs;$(SolutionDir)ExternalLibs\GLAD\include;$(SolutionDir)ExternalLibs\GLFW\include;$(SolutionDir)KTEngine\Util;$(SolutionDir)KTEngine;$(SolutionDir)ExternalLibs\GLM;$(SolutionDir)ExternalLibs\IMGUI;$(SolutionDir)/LostTower;$(SolutionDir)/KTEngine/Component;$(SolutionDir)/KTEngine/Graphics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>K_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)ExternalLibs;$(SolutionDir)ExternalLibs\GLAD\include;$(SolutionDir)ExternalLibs\GLFW\include;$(SolutionDir)KTEngine\Util;$(SolutionDir)KTEngine;$(SolutionDir)ExternalLibs\GLM;$(SolutionDir)ExternalLibs\IMGUI;$(SolutionDir)/LostTower;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ExternalLibs;$(SolutionDir)ExternalLibs\GLAD\include;$(SolutionDir)ExternalLibs\GLFW\include;$(SolutionDir)KTEngine\Util;$(SolutionDir)KTEngine;$(SolutionDir)ExternalLibs\GLM;$(SolutionDir)ExternalLibs\IMGUI;$(SolutionDir)/LostTower;$(SolutionDir)/KTEngine/Component;$(SolutionDir)/KTEngine/Graphics;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -145,6 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="KTEngine\Component\Component.cpp" />
     <ClCompile Include="KTEngine\Util\AssetPool.cpp" />
     <ClCompile Include="KTEngine\GameObject.cpp" />
     <ClCompile Include="KTEngine\Graphics\Camera.cpp" />
@@ -173,8 +174,11 @@
     <ClCompile Include="KTEngine\Transform.cpp" />
     <ClCompile Include="LostTower\Player.cpp" />
     <ClCompile Include="LostTower\Monster.cpp" />
+    <ClCompile Include="KTEngine\Graphics\Renderer.cpp" />
+    <ClCompile Include="KTEngine\Graphics\SpriteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KTEngine\Component\Component.h" />
     <ClInclude Include="KTEngine\Util\AssetPool.h" />
     <ClInclude Include="KTEngine\GameObject.h" />
     <ClInclude Include="KTEngine\Graphics\Camera.h" />
@@ -494,6 +498,8 @@
     <ClInclude Include="KTEngine\Transform.h" />
     <ClInclude Include="LostTower\Player.h" />
     <ClInclude Include="LostTower\Monster.h" />
+    <ClInclude Include="KTEngine\Graphics\Renderer.h" />
+    <ClInclude Include="KTEngine\Graphics\SpriteRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="ExternalLibs\GLFW\lib\glfw3.lib" />
