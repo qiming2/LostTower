@@ -108,6 +108,15 @@
     <ClCompile Include="KTEngine\Component\Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="KTEngine\Component\Collider2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\CollisionManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\CollisionDetectionAlgo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KTEngine\Window.h">
@@ -1074,6 +1083,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KTEngine\Graphics\Renderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\Component\Collider2D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\CollisionManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\CollisionDetectionAlgo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

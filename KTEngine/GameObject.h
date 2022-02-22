@@ -20,6 +20,9 @@ public:
 	virtual void addComponent(Ref<Component> comp);
 	virtual void update(float dt);
 	virtual void imgui();
+	virtual void onTriggerEnter();
+	virtual void onTrigger();
+	virtual void onTriggerExit();
 private:
 	std::vector<Ref<Component>> comps;
 };

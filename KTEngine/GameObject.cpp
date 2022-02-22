@@ -39,3 +39,19 @@ void GameObject::imgui()
 	ImGui::Text("Gameobject test");
 	ImGui::End();
 }
+
+void GameObject::onTriggerEnter()
+{
+	kp("OnTriggerEnter Func");
+}
+
+void
+GameObject::onTrigger()
+{
+	kp("OnTrigger Func");
+}
+
+void GameObject::onTriggerExit()
+{
+	kp("OnTriggerExit Func");
+}

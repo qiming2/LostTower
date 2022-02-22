@@ -12,12 +12,12 @@ Renderer* Renderer::getInstance()
 
 void Renderer::render()
 {
-	static std::vector<int> tius = { 0, 1, 2, 3, 4, 5, 6, 7 };
+	
 	glBindVertexArray(vao);
 	sprite_shader->bind();
 	sprite_shader->set4fv("projection", Camera::getInstance()->getOrthoProjectionMatrix());
 	sprite_shader->set4fv("view", Camera::getInstance()->getView());
-	sprite_shader->setiArray("tex", tius.size(), &tius.data()[0]);
+	
 	glm::mat4 model;
 	for (Ref<SpriteRenderer> sp : sprnds) {
 		sp->getTexture()->bind();
@@ -56,5 +56,9 @@ Renderer::Renderer()
 	glBindVertexArray(0);
 
 	sprite_shader = AssetPool::getShader("KTEngine/Asset/Shader/default.glsl");
-	
+
+	// send texture unit ids once
+	static std::vector<int> tius = { 0, 1, 2, 3, 4, 5, 6, 7 };
+	sprite_shader->bind();
+	sprite_shader->setiArray("tex", tius.size(), &tius.data()[0]);
 }

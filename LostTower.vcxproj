@@ -145,6 +145,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="KTEngine\CollisionDetectionAlgo.cpp" />
+    <ClCompile Include="KTEngine\CollisionManager.cpp" />
+    <ClCompile Include="KTEngine\Component\Collider2D.cpp" />
     <ClCompile Include="KTEngine\Component\Component.cpp" />
     <ClCompile Include="KTEngine\Util\AssetPool.cpp" />
     <ClCompile Include="KTEngine\GameObject.cpp" />
@@ -178,6 +181,9 @@
     <ClCompile Include="KTEngine\Graphics\SpriteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KTEngine\CollisionDetectionAlgo.h" />
+    <ClInclude Include="KTEngine\CollisionManager.h" />
+    <ClInclude Include="KTEngine\Component\Collider2D.h" />
     <ClInclude Include="KTEngine\Component\Component.h" />
     <ClInclude Include="KTEngine\Util\AssetPool.h" />
     <ClInclude Include="KTEngine\GameObject.h" />

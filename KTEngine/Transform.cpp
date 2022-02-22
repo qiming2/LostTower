@@ -27,7 +27,7 @@ void Transform::fillModelMatrix(glm::mat4& model)
 	model = glm::translate(model, glm::vec3(position));
 	model = glm::rotate(model, rotation[0], glm::vec3(1.0f, 0.0f, 0.0f));
 	model = glm::rotate(model, rotation[1], glm::vec3(0.0f, 1.0f, 0.0f));
-	model = glm::rotate(model, rotation[2], glm::vec3(0.0f, 0.0f, -1.0f));
+	model = glm::rotate(model, rotation[2], glm::vec3(0.0f, 0.0f, 1.0f));
 	model = glm::scale(model, scale);
 }
 
