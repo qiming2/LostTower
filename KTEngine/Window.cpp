@@ -1,4 +1,3 @@
-#include <filesystem>
 #include "Window.h"
 #include "Input/MouseListener.h"
 #include "Input/KeyListener.h"
@@ -143,7 +142,7 @@ float Window::getTime()
 void Window::loop () {
 	static bool show_demo_window = true;
 	float dt = 0.0f;
-
+	
 	// GL_DEPTH_BUFFERE_BIT also needs to be cleared!
 	glEnable(GL_DEPTH_TEST);
 	while (!glfwWindowShouldClose(window)) {
@@ -159,7 +158,7 @@ void Window::loop () {
 
 		// processInput before game
 		if (KeyListener::isKeyPressed(GLFW_KEY_ESCAPE)) {
-			kp("Test test");
+			
 			glfwSetWindowShouldClose(window, GLFW_TRUE);
 		}
 
@@ -182,7 +181,7 @@ void Window::loop () {
 
 
 		// Rendering
-		Renderer::getInstance()->render();
+		Renderer::getInstance()->renderSpriteSheet();
 		
 
 		// Always showing demo window to learn more about imgui

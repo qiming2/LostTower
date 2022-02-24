@@ -1,4 +1,5 @@
 #include "Util.h"
+#include <ostream>
 
 std::vector<std::string> Util::split(std::string s, const std::string& delim)
 {
@@ -22,4 +23,12 @@ std::vector<float> Util::spriteQuad() {
 		 0.5f, -0.5f,  1.0f, 0.0f,
 		 0.5f,  0.5f,  1.0f, 1.0f
 	};
+}
+
+
+std::ostream& operator<<(std::ostream& stream, glm::vec3 v)
+{
+	stream << v[0] << " " << v[1] << " " << v[2];
+
+	return stream;
 }

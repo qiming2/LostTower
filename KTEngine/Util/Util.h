@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <GLM/glm.hpp>
 
 #ifdef K_DEBUG
 #define GLCall(x) GLClearError();\
@@ -20,4 +21,6 @@ public:
 	static std::vector<float> spriteQuad();
 private:
 };
+
+std::ostream& operator<<(std::ostream& stream, glm::vec3 v);
 

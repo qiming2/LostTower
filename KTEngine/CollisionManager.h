@@ -10,7 +10,6 @@ public:
 	void update(float dt);
 	~CollisionManager();
 private:
-	CollisionManager();
 	std::vector<Collider2D> colliders;
 };
 

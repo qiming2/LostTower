@@ -14,9 +14,6 @@ public:
 	void update(float dt);
 	void imgui();
 private:
-	Ref<Shader> shader;
-	Ref<Texture> tex;
-	unsigned int vao, vbo;
 	glm::mat4 model;
 	Camera* camera;
 	float speed;

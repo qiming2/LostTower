@@ -9,6 +9,11 @@ class Renderer
 public:
 	static Renderer* getInstance();
 	void render();
+
+	// Temporary!!!!!!!!!
+	void renderSpriteSheet();
+
+
 	void addSpriteRenderer(Ref<SpriteRenderer> spr);
 private:
 	Renderer();

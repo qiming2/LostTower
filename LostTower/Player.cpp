@@ -8,8 +8,11 @@
 Player::Player() :
 	GameObject()
 {
-	addComponent(SpriteRenderer::createSprite("KTEngine\\Asset\\Image\\GI\\hutao_4k.jpg", 3));
+	// Add collision component
+	addComponent(SpriteRenderer::createSprite("KTEngine\\Asset\\SpriteSheets\\sample_art\\Woodcutter\\Woodcutter_attack1.png", 3));
 	speed = 10.0f;
+	transform.move(glm::vec3(0.0f, 3.0f, 0.0f), 200.0f);
+	transform.changeScale(glm::vec3(144.0f, 144.0f, 1.0f));
 }
 
 Player::~Player()
@@ -27,13 +30,19 @@ void Player::update(float dt)
 	}
 	else if (KeyListener::isKeyPressed(GLFW_KEY_A) || KeyListener::isKeyPressed(GLFW_KEY_LEFT)) {
 		transform.move(glm::vec3(-1.0f, 0.0f, 0.0f), speed);
+		if (transform.scale[0] > 0.0f) {
+			transform.scale[0] = -transform.scale[0];
+		}
 	}
 	else if (KeyListener::isKeyPressed(GLFW_KEY_D) || KeyListener::isKeyPressed(GLFW_KEY_RIGHT)) {
 		transform.move(glm::vec3(1.0f, 0.0f, 0.0f), speed);
+		if (transform.scale[0] < 0.0f) {
+			transform.scale[0] = -transform.scale[0];
+		}
 	}
 	
-	transform.changeScale(glm::vec3(100.0f, 100.0f, 100.0f));
-	transform.rotate(glm::vec3(0.0f, 0.0f, dt));
+	
+	//transform.rotate(glm::vec3(0.0f, 0.0f, dt));
 
 }
 

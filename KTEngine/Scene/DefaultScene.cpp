@@ -6,6 +6,8 @@
 #include "Window.h"
 #include "Input/KeyListener.h"
 #include "AssetPool.h"
+#include "Collider2D.h"
+#include "CollisionDetectionAlgo.h"
 
 //////////////////////////////////////// Temporary Debug Tool /////////////////
 #define ASSERT(x) if (!(x)) __debugbreak();
@@ -23,6 +25,7 @@ bool GLLogCall(const char* function, const char* file, int line)
 	}
 	return true;
 }
+
 #ifdef K_DEBUG
 #define GLCall(x) GLClearError();\
     x;\
@@ -76,6 +79,10 @@ DefaultScene::DefaultScene()
 	background_tex = AssetPool::getTexture("LostTower\\Asset\\background_1.jpg", id);
 
 	camera = Camera::getInstance();
+
+	// Animation test
+	// Currently pass offset, width and height
+
 }
 
 DefaultScene::DefaultScene(const std::string& name)
@@ -89,6 +96,7 @@ DefaultScene::~DefaultScene()
 
 void DefaultScene::update(float dt)
 {
+	
 	camera->update(dt);
 	GLCall(glBindVertexArray(vao));
 	background_shader->bind();

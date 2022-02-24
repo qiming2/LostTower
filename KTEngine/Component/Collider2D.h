@@ -1,6 +1,10 @@
 #pragma once
+#include <ostream>
 #include "GLM/glm.hpp"
 #include "Component/Component.h"
+
+
+
 
 enum class ColliderType {
 	None = 0,
@@ -8,10 +12,13 @@ enum class ColliderType {
 	Polygon
 };
 
+std::ostream& operator<<(std::ostream& stream, ColliderType type);
+
 struct collider_resolution {
 	glm::vec3 slide_vec;
 	float length;
 	bool isCollided;
+	collider_resolution();
 };
 
 struct Collider2D : public Component
@@ -24,11 +31,13 @@ public:
 };
 
 struct CircleCollider : public Collider2D {
-	float origin;
+	CircleCollider();
+	glm::vec3 origin;
 	float radius;
 };
 
 struct PolygonCollider : public Collider2D {
-	// Always order the vertices counterclock-wise 
+	// Always order the vertices counterclock-wise
+	PolygonCollider();
 	std::vector<glm::vec3> points;
 };
