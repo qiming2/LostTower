@@ -2,17 +2,15 @@
 #include "Monster.h"
 #include "Util/Util.h"
 #include "SpriteRenderer.h"
+#include "Texture.h"
 
 Monster::Monster() :
 	GameObject()
 {
-
-	// Test animation
-	//addComponent(SpriteRenderer::createSprite("KTEngine\\Asset\\SpriteSheets\\sample_art\\Woodcutter\\Woodcutter_attack1.png", 5));
 	// test renderer and spriteRenderer
 
 	//addComponent(SpriteRenderer::createSprite("LostTower\\Asset\\se_1.jpg", 4));
-	transform.changeScale(glm::vec3(288.0f, 48.0f, 1.0f));
+	transform.changeScale(glm::vec3(96.0f, 96.0f, 1.0f));
 }
 
 Monster::~Monster()
@@ -21,8 +19,6 @@ Monster::~Monster()
 
 void Monster::update(float dt)
 {
-	
-
 }
 
 void Monster::imgui()

@@ -7,6 +7,7 @@ class AssetPool
 public:
 	static Ref<Texture> getTexture(const std::string& fileName);
 	static Ref<Texture> getTexture(const std::string& fileName, unsigned int id);
+	static Ref<Texture> getTexture(const std::string& fileName, unsigned int id, unsigned int texFlag);
 	static Ref<Shader> getShader(const std::string& fileName);
 	static AssetPool* getInstance();
 private:

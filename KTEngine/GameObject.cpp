@@ -23,16 +23,6 @@ void GameObject::update(float dt)
 	
 }
 
-Ref<Component> GameObject::getComponentByType(ComponentType type)
-{
-	for (Ref<Component> cmp : comps) {
-		if (cmp->getCompType() == type) {
-			return cmp;
-		}
-	}
-	return nullptr;
-}
-
 void GameObject::imgui()
 {
 	ImGui::Begin("GameObject Inspector");

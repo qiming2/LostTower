@@ -4,6 +4,8 @@
 #include "Graphics/Texture.h"
 #include "Graphics/Camera.h"
 #include "Input/KeyListener.h"
+#include "Animation.h"
+
 
 class Monster : public GameObject
 {

@@ -99,7 +99,7 @@
     <ClCompile Include="KTEngine\Util\AssetPool.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="KTEngine\Graphics\SpriteRenderer.cpp">
+    <ClCompile Include="KTEngine\Component\SpriteRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="KTEngine\Graphics\Renderer.cpp">
@@ -115,6 +115,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="KTEngine\CollisionDetectionAlgo.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\Graphics\Sprite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\Graphics\Animation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KTEngine\Component\Animator.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1079,7 +1088,7 @@
     <ClInclude Include="KTEngine\Component\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="KTEngine\Graphics\SpriteRenderer.h">
+    <ClInclude Include="KTEngine\Component\SpriteRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KTEngine\Graphics\Renderer.h">
@@ -1092,6 +1101,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KTEngine\CollisionDetectionAlgo.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\Graphics\Sprite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\Graphics\Animation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KTEngine\Component\Animator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

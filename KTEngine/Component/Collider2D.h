@@ -21,7 +21,7 @@ struct collider_resolution {
 	collider_resolution();
 };
 
-struct Collider2D : public Component
+class Collider2D : public Component
 {
 	COMPONENT_TYPE(Collider2D);
 public:

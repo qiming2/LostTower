@@ -145,6 +145,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="KTEngine\Component\Animator.cpp" />
+    <ClCompile Include="KTEngine\Graphics\Animation.cpp" />
     <ClCompile Include="KTEngine\CollisionDetectionAlgo.cpp" />
     <ClCompile Include="KTEngine\CollisionManager.cpp" />
     <ClCompile Include="KTEngine\Component\Collider2D.cpp" />
@@ -178,9 +180,12 @@
     <ClCompile Include="LostTower\Player.cpp" />
     <ClCompile Include="LostTower\Monster.cpp" />
     <ClCompile Include="KTEngine\Graphics\Renderer.cpp" />
-    <ClCompile Include="KTEngine\Graphics\SpriteRenderer.cpp" />
+    <ClCompile Include="KTEngine\Component\SpriteRenderer.cpp" />
+    <ClCompile Include="KTEngine\Graphics\Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="KTEngine\Component\Animator.h" />
+    <ClInclude Include="KTEngine\Graphics\Animation.h" />
     <ClInclude Include="KTEngine\CollisionDetectionAlgo.h" />
     <ClInclude Include="KTEngine\CollisionManager.h" />
     <ClInclude Include="KTEngine\Component\Collider2D.h" />
@@ -505,7 +510,8 @@
     <ClInclude Include="LostTower\Player.h" />
     <ClInclude Include="LostTower\Monster.h" />
     <ClInclude Include="KTEngine\Graphics\Renderer.h" />
-    <ClInclude Include="KTEngine\Graphics\SpriteRenderer.h" />
+    <ClInclude Include="KTEngine\Component\SpriteRenderer.h" />
+    <ClInclude Include="KTEngine\Graphics\Sprite.h" />
   </ItemGroup>
   <ItemGroup>
     <Library Include="ExternalLibs\GLFW\lib\glfw3.lib" />

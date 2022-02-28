@@ -9,6 +9,7 @@ CollisionManager* CollisionManager::getInstance()
 void CollisionManager::update(float dt)
 {
     // Collision detection and resolution
+
 }
 
 CollisionManager::~CollisionManager()

@@ -181,7 +181,7 @@ void Window::loop () {
 
 
 		// Rendering
-		Renderer::getInstance()->renderSpriteSheet();
+		Renderer::getInstance()->render();
 		
 
 		// Always showing demo window to learn more about imgui
@@ -204,6 +204,11 @@ void Window::loop () {
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 		// swap buffer
 		glfwSwapBuffers(window);
+
+		// EndFrameCall
+		MouseListener::endFrame();
+		KeyListener::endFrame();
+
 		glfwPollEvents();
 		prev_time = cur_time;
 		cur_time = glfwGetTime();

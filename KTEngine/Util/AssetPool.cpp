@@ -24,6 +24,18 @@ Ref<Texture> AssetPool::getTexture(const std::string& fileName, unsigned int id)
 	return newTex;
 }
 
+Ref<Texture> AssetPool::getTexture(const std::string& fileName, unsigned int id, unsigned int texFlag)
+{
+	AssetPool* instance = getInstance();
+	std::unordered_map<std::string, Ref<Texture>>::iterator it;
+	if ((it = instance->textures.find(fileName)) != instance->textures.end()) {
+		return it->second;
+	}
+	Ref<Texture> newTex = std::make_shared<Texture>(fileName.c_str(), id, texFlag);
+	instance->textures.insert({ fileName, newTex });
+	return newTex;
+}
+
 Ref<Shader> AssetPool::getShader(const std::string& fileName)
 {
 	AssetPool* instance = getInstance();

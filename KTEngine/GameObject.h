@@ -16,7 +16,17 @@ public:
 	std::string tag;
 	
 
-	Ref<Component> getComponentByType(ComponentType type);
+	template <typename T>
+	Ref<T> getComponentByType()
+	{
+		for (Ref<Component> cmp : comps) {
+			if (cmp->getCompType() == T::getStaticType()) {
+				// Not sure if this would cause performance issue or not
+				return std::dynamic_pointer_cast<T>(cmp);
+			}
+		}
+		return nullptr;
+	}
 	virtual void addComponent(Ref<Component> comp);
 	virtual void update(float dt);
 	virtual void imgui();

@@ -37,6 +37,7 @@ void main() {
 	color = texture(tex[texId], vs_in.uv);
 	if (color.a < 0.01)
 		discard;
+	/*out_color = vec4(1.0, 1.0, 1.0, 1.0);*/
 	out_color = vec4(vec3(color), 1.0);
 }
 

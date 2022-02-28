@@ -13,7 +13,7 @@ Renderer* Renderer::getInstance()
 
 void Renderer::render()
 {
-	
+
 	glBindVertexArray(vao);
 	sprite_shader->bind();
 	sprite_shader->set4fv("projection", Camera::getInstance()->getOrthoProjectionMatrix());
@@ -21,8 +21,15 @@ void Renderer::render()
 	
 	glm::mat4 model;
 	for (Ref<SpriteRenderer> sp : sprnds) {
-		sp->getTexture()->bind();
-		sprite_shader->seti("texId", sp->getTexture()->getID());
+		if (sp->getSprite()) {
+			// Process animated sprite
+			glBindBuffer(GL_ARRAY_BUFFER, vbo);
+			glBufferSubData(GL_ARRAY_BUFFER, sizeof(float) * 12, sizeof(float) * 12, sp->getSprite()->getUVs().data());
+			glBindBuffer(GL_ARRAY_BUFFER, 0);
+			sp->getSprite()->getTexture()->bind();
+			sprite_shader->seti("texId", sp->getSprite()->getTexture()->getID());
+		}
+
 		sp->gameObject->transform.fillModelMatrix(model);
 		sprite_shader->set4fv("model", model);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -100,8 +107,8 @@ void Renderer::renderSpriteSheet()
 	sprite_shader->set4fv("view", Camera::getInstance()->getView());
 	glm::mat4 model;
 	for (Ref<SpriteRenderer> sp : sprnds) {
-		sp->getTexture()->bind();
-		sprite_shader->seti("texId", sp->getTexture()->getID());
+		sp->getSprite()->getTexture()->bind();
+		sprite_shader->seti("texId", sp->getSprite()->getTexture()->getID());
 		sp->gameObject->transform.fillModelMatrix(model);
 		sprite_shader->set4fv("model", model);
 		glDrawArrays(GL_TRIANGLES, 0, 6);
@@ -125,13 +132,13 @@ Renderer::Renderer()
 
 	GLCall(glGenBuffers(1, &vbo));
 	GLCall(glBindBuffer(GL_ARRAY_BUFFER, vbo));
-	GLCall(glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), (void*)vertices.data(), GL_STATIC_DRAW));
+	GLCall(glBufferData(GL_ARRAY_BUFFER, vertices.size() * sizeof(float), (void*)vertices.data(), GL_DYNAMIC_DRAW));
 
 	// vertex attribute
 
-	GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)0));
+	GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, (void*)0));
 	GLCall(glEnableVertexAttribArray(0));
-	GLCall(glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 4, (void*)(sizeof(float) * 2)));
+	GLCall(glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(float) * 12)));
 	GLCall(glEnableVertexAttribArray(1));
 	glBindVertexArray(0);
 

@@ -7,6 +7,28 @@ Texture::Texture(const char* image, unsigned int activeID):
 	m_activeID = activeID;
 }
 
+Texture::Texture(const char* image, unsigned int activeID, unsigned int texFlag)
+	:Texture(image)
+{
+	m_activeID = activeID;
+	bind();
+	if (texFlag & KTexture::CLAMP_TO_EDGE) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+	}
+
+	if (texFlag & KTexture::MAG_NEAREST) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+	}
+
+	if (texFlag & KTexture::MIN_LINEAR_NEAREST) {
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+	}
+	
+	unBind();
+}
+
 Texture::Texture(const char* image)
 {
 	m_activeID = 0;
@@ -45,10 +67,15 @@ Texture::Texture(const char* image)
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+		
+		m_width = width;
+		m_height = height;
 	}
 	else {
 		ekp("TEXTURE::LOAD::FAIL\n ----", image);
+		m_width = 0;
+		m_height = 0;
 	}
 	stbi_image_free(data);
 	unBind();
@@ -78,4 +105,12 @@ void Texture::bind()
 void Texture::unBind()
 {
 	glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+unsigned int Texture::getWidth() {
+	return m_width;
+}
+
+unsigned int Texture::getHeight() { 
+	return m_height;
 }

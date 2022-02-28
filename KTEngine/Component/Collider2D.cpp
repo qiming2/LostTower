@@ -21,7 +21,8 @@ std::ostream& operator<<(std::ostream& stream, ColliderType type) {
 }
 
 
-Collider2D::Collider2D(ColliderType type)
+Collider2D::Collider2D(ColliderType type) :
+	Component()
 {
 	this->m_type = type;
 }
