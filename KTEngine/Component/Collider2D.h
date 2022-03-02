@@ -1,5 +1,6 @@
 #pragma once
 #include <ostream>
+#include "Common.h"
 #include "GLM/glm.hpp"
 #include "Component/Component.h"
 
@@ -25,9 +26,12 @@ class Collider2D : public Component
 {
 	COMPONENT_TYPE(Collider2D);
 public:
-	Collider2D(ColliderType type);
+	static Ref<Collider2D> createCollider2D(ColliderType type);
 	~Collider2D();
 	ColliderType m_type;
+protected:
+	Collider2D(ColliderType type);
+	friend class CollisionManager;
 };
 
 struct CircleCollider : public Collider2D {

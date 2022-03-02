@@ -6,6 +6,7 @@
 #include "Animation.h"
 #include "Animator.h"
 #include "Sprite.h"
+#include "Collider2D.h"
 
 
 namespace KPlayer {
@@ -22,7 +23,7 @@ Player::Player() :
 {
 	addComponent(SpriteRenderer::createSpriteRenderer());
 	addComponent(Animator::createAnimator(4));
-
+	addComponent(Collider2D::createCollider2D(ColliderType::Circle));
 	unsigned int texFlag = KTexture::CLAMP_TO_EDGE | KTexture::MAG_NEAREST;
 	Ref<Sprite> sprite = Sprite::createSprite("KTEngine\\Asset\\SpriteSheets\\sample_art\\Woodcutter\\Woodcutter_attack1.png", 5, texFlag);
 	Ref<Sprite> sprite1 = Sprite::createSprite("KTEngine\\Asset\\SpriteSheets\\sample_art\\Woodcutter\\Woodcutter_attack2.png", 5, texFlag);
@@ -44,8 +45,8 @@ Player::Player() :
 	// Add collision component
 	/*Ref<Sprite> sprite = Sprite::createSprite("LostTower\\Asset\\se_1.jpg", 0);
 	addComponent(SpriteRenderer::createSpriteRenderer(sprite));*/
-	speed = 10.0f;
-	transform.move(glm::vec3(0.0f, 3.0f, 0.0f), 200.0f);
+	speed = 5.0f;
+	transform.move(glm::vec3(0.0f, 3.0f, 0.0f), 250.0f);
 	transform.changeScale(glm::vec3(144.0f, 144.0f, 1.0f));
 }
 
@@ -77,7 +78,7 @@ void Player::update(float dt)
 	
 	static unsigned int temp_index = 1;
 	if (KeyListener::isKeyPressed(GLFW_KEY_SPACE)) {
-		temp_index = (temp_index);
+		temp_index = (temp_index + 1) % 4;
 		getComponentByType<Animator>()->setAnimation(temp_index, KAnimator::LOOPING);
 	}
 	//transform.rotate(glm::vec3(0.0f, 0.0f, dt));

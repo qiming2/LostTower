@@ -11,6 +11,10 @@ void Transform::move(glm::vec3 direction, float speed) {
 	position = glm::translate(glm::mat4(1.0f), normalize(direction) * speed) * glm::vec4(position, 1.0f);
 }
 
+void Transform::move(glm::vec3 vec) {
+	position = glm::translate(glm::mat4(1.0f), vec) * glm::vec4(position, 1.0f);
+}
+
 void Transform::rotate(glm::vec3 rotation) {
 	this->rotation += rotation;
 }

@@ -5,6 +5,7 @@
 #include "Scene/SceneManager.h"
 #include "Scene/DefaultScene.h"
 #include "Renderer.h"
+#include "CollisionManager.h"
 
 Ref<Window> Window::getInstance()
 {
@@ -177,7 +178,8 @@ void Window::loop () {
 		// Game Logic
 		SceneManager::update(dt);
 
-
+		// Physics update
+		CollisionManager::getInstance()->update(dt);
 
 
 		// Rendering

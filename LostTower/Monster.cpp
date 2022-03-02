@@ -3,14 +3,23 @@
 #include "Util/Util.h"
 #include "SpriteRenderer.h"
 #include "Texture.h"
+#include "Animator.h"
+#include "Collider2D.h"
 
 Monster::Monster() :
 	GameObject()
 {
 	// test renderer and spriteRenderer
-
-	//addComponent(SpriteRenderer::createSprite("LostTower\\Asset\\se_1.jpg", 4));
-	transform.changeScale(glm::vec3(96.0f, 96.0f, 1.0f));
+	addComponent(SpriteRenderer::createSpriteRenderer());
+	addComponent(Animator::createAnimator(1));
+	addComponent(Collider2D::createCollider2D(ColliderType::Circle));
+	unsigned int texFlag = KTexture::CLAMP_TO_EDGE | KTexture::MAG_NEAREST;
+	Ref<Sprite> sprite = Sprite::createSprite("KTEngine\\Asset\\SpriteSheets\\sample_art\\Woodcutter\\Woodcutter_attack1.png", 5, texFlag);
+	Ref<Animation> anime = Animation::createAnimation(sprite);
+	Ref<Animator> animator = getComponentByType<Animator>();
+	animator->addAnimation(anime, 0);
+	animator->setAnimation(0, KAnimator::LOOPING);
+	transform.changeScale(glm::vec3(144.0f, 144.0f, 1.0f));
 }
 
 Monster::~Monster()

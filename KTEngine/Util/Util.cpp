@@ -24,7 +24,7 @@ std::vector<float> Util::spriteQuad() {
 }
 
 
-std::ostream& operator<<(std::ostream& stream, glm::vec3 v)
+std::ostream& operator<<(std::ostream& stream, const glm::vec3& v)
 {
 	stream << v[0] << " " << v[1] << " " << v[2];
 

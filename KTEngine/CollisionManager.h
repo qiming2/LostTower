@@ -7,9 +7,11 @@ class CollisionManager
 {
 public:
 	static CollisionManager* getInstance();
+	void addCollider2D(Ref<Collider2D>);
 	void update(float dt);
 	~CollisionManager();
 private:
-	std::vector<Collider2D> colliders;
+	CollisionManager();
+	std::vector<Ref<Collider2D>> m_colliders;
 };
 

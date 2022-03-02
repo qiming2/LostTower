@@ -1,5 +1,6 @@
 #pragma once
 #include "iostream"
+#include "Util.h"
 // simple variadic print function for debugging purposes
 // this is not recommended in practice! would
 // drastically increase code size

@@ -22,5 +22,5 @@ public:
 private:
 };
 
-std::ostream& operator<<(std::ostream& stream, glm::vec3 v);
+std::ostream& operator<<(std::ostream& stream, const glm::vec3& v);
 

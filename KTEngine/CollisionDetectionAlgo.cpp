@@ -2,18 +2,34 @@
 #include "CollisionDetectionAlgo.h"
 #include "Util/k_print.h"
 
-namespace col_algo {
+namespace k_col_algo {
 	collider_resolution checkCollision(Collider2D* a, Collider2D* b) {
-		switch (a->m_type) {
-		case ColliderType::Circle:
-			kp("Circle First collision detection");
-			break;
-		case ColliderType::Polygon:
-			break;
-		default:	      
-			ekp(a->m_type, " can not be handled");
+		collider_resolution ret;
+		if (a->m_type == ColliderType::Circle) {
+			if (b->m_type == ColliderType::Circle) {
+				ret = checkCollision((CircleCollider*)a, (CircleCollider*)b);
+			}
+			else if (b->m_type == ColliderType::Polygon){
+				ekp("Not implemented");
+			}
+			else {
+				ekp("UNKNOWN TYPE B: ", b->m_type);
+			}
 		}
-		return {};
+		else if (a->m_type == ColliderType::Polygon) {
+
+			if (b->m_type == ColliderType::Circle) {
+				ekp("Not implemented");
+			} else if (b->m_type == ColliderType::Polygon) {
+				ret = checkCollision((PolygonCollider*)a, (PolygonCollider*)b);
+			} else {
+				ekp("UNKNOWN TYPE B: ", b->m_type);
+			}
+		}
+		else {
+			ekp("UKNOWN TYPE A: ", a->m_type);
+		}
+		return ret;
 	}
 
 	// Circle vs Circle
@@ -68,8 +84,8 @@ namespace col_algo {
 			// points are ordered counterclockwise
 			// thus we need to compute the right 
 			// normal which is <dy, -dx, 0>
-			normal = glm::vec3(cur_edge[1], -cur_edge[0], 0.0f);
-			for (const glm::vec3 p : apoints) {
+			normal = glm::normalize(glm::vec3(cur_edge[1], -cur_edge[0], 0.0f));
+			for (const glm::vec3& p : apoints) {
 				temp_edge = p - cur_point;
 				dotVal = glm::dot(temp_edge, normal);
 				if (amin > dotVal) {
@@ -81,7 +97,7 @@ namespace col_algo {
 				}
 			}
 
-			for (const glm::vec3 p : bpoints) {
+			for (const glm::vec3& p : bpoints) {
 				temp_edge = p - cur_point;
 				dotVal = glm::dot(temp_edge, normal);
 				if (bmin > dotVal) {
@@ -123,8 +139,8 @@ namespace col_algo {
 			// points are ordered counterclockwise
 			// thus we need to compute the right 
 			// normal which is <dy, -dx, 0>
-			normal = glm::vec3(cur_edge[1], -cur_edge[0], 0.0f);
-			for (const glm::vec3 p : apoints) {
+			normal = glm::normalize(glm::vec3(cur_edge[1], -cur_edge[0], 0.0f));
+			for (const glm::vec3& p : apoints) {
 				temp_edge = p - cur_point;
 				dotVal = glm::dot(temp_edge, normal);
 				if (amin > dotVal) {
@@ -136,7 +152,7 @@ namespace col_algo {
 				}
 			}
 
-			for (const glm::vec3 p : bpoints) {
+			for (const glm::vec3& p : bpoints) {
 				temp_edge = p - cur_point;
 				dotVal = glm::dot(temp_edge, normal);
 				if (bmin > dotVal) {
@@ -175,6 +191,9 @@ namespace col_algo {
 		ret.length = glm::length(ret.slide_vec);
 		ret.slide_vec = glm::normalize(ret.slide_vec);
 		ret.isCollided = true;
+		if (ret.isCollided) {
+			kp("Length, slide_vec: ", ret.length, " ", ret.slide_vec);
+		}
 		return ret;
 	}
 }
