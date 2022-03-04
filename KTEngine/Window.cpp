@@ -164,17 +164,6 @@ void Window::loop () {
 		}
 
 
-		//if (KeyListener::isKeyPressed(GLFW_KEY_C)) {
-		//	// Test change scene
-		//	SceneManager::changeScene("Level Editor Scene");
-		//}
-
-		//if (KeyListener::isKeyPressed(GLFW_KEY_D)) {
-		//	// Test change scene
-		//	SceneManager::changeScene("Default Scene");
-		//}
-
-
 		// Game Logic
 		SceneManager::update(dt);
 

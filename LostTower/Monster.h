@@ -14,6 +14,7 @@ public:
 	~Monster();
 	void update(float dt);
 	void imgui();
+	void onTrigger(Collider2D*) override;
 private:
 	glm::mat4 model;
 	Camera* camera;

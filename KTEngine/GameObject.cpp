@@ -30,18 +30,18 @@ void GameObject::imgui()
 	ImGui::End();
 }
 
-void GameObject::onTriggerEnter()
+void GameObject::onTriggerEnter(Collider2D* other)
 {
 	kp("OnTriggerEnter Func");
 }
 
 void
-GameObject::onTrigger()
+GameObject::onTrigger(Collider2D* other)
 {
-	kp("OnTrigger Func");
+	
 }
 
-void GameObject::onTriggerExit()
+void GameObject::onTriggerExit(Collider2D* other)
 {
 	kp("OnTriggerExit Func");
 }

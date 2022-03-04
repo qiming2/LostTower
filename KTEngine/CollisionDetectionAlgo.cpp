@@ -74,6 +74,8 @@ namespace k_col_algo {
 
 		float minDisplace = std::numeric_limits<float>::max();
 		float localMinDis = 0.0f;
+
+		glm::vec3 aminP(1.0f), bminP(1.0f);
 		for (size_t i = 0; i < apoints.size(); ++i) {
 			amin = std::numeric_limits<float>::max();
 			bmin = std::numeric_limits<float>::max();
@@ -89,6 +91,7 @@ namespace k_col_algo {
 				temp_edge = p - cur_point;
 				dotVal = glm::dot(temp_edge, normal);
 				if (amin > dotVal) {
+					aminP = p;
 					amin = dotVal;
 				}
 
@@ -101,6 +104,7 @@ namespace k_col_algo {
 				temp_edge = p - cur_point;
 				dotVal = glm::dot(temp_edge, normal);
 				if (bmin > dotVal) {
+					bminP = p;
 					bmin = dotVal;
 				}
 
@@ -113,7 +117,7 @@ namespace k_col_algo {
 			// results in no collision, we can
 			// safely conclude that these two
 			// polygons are not colliding
-			if (amax < bmin || bmax < amin) {
+			if (amax < bmin + KEPSILON || bmax < amin + KEPSILON) {
 				return ret;
 			}
 
@@ -125,6 +129,10 @@ namespace k_col_algo {
 			if (localMinDis < minDisplace) {
 				minDisplace = localMinDis;
 				ret.slide_vec = normal;
+				if (glm::dot(aminP - bminP, normal) <= -KEPSILON) {
+					ret.slide_vec = -ret.slide_vec;
+				}
+				
 			}
 		}
 
@@ -144,6 +152,7 @@ namespace k_col_algo {
 				temp_edge = p - cur_point;
 				dotVal = glm::dot(temp_edge, normal);
 				if (amin > dotVal) {
+					aminP = p;
 					amin = dotVal;
 				}
 
@@ -156,6 +165,7 @@ namespace k_col_algo {
 				temp_edge = p - cur_point;
 				dotVal = glm::dot(temp_edge, normal);
 				if (bmin > dotVal) {
+					bminP = p;
 					bmin = dotVal;
 				}
 
@@ -168,7 +178,7 @@ namespace k_col_algo {
 			// results in no collision, we can
 			// safely conclude that these two
 			// polygons are not colliding
-			if (amax < bmin || bmax < amin) {
+			if (amax < bmin + KEPSILON || bmax < amin + KEPSILON) {
 				return ret;
 			}
 
@@ -184,6 +194,10 @@ namespace k_col_algo {
 			if (localMinDis < minDisplace) {
 				minDisplace = localMinDis;
 				ret.slide_vec = -normal;
+				if (glm::dot(aminP - bminP, normal) <= -KEPSILON) {
+					ret.slide_vec = -ret.slide_vec;
+				}
+				
 			}
 		}
 
@@ -191,9 +205,6 @@ namespace k_col_algo {
 		ret.length = glm::length(ret.slide_vec);
 		ret.slide_vec = glm::normalize(ret.slide_vec);
 		ret.isCollided = true;
-		if (ret.isCollided) {
-			kp("Length, slide_vec: ", ret.length, " ", ret.slide_vec);
-		}
 		return ret;
 	}
 }

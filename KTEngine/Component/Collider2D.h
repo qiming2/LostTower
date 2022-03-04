@@ -13,6 +13,11 @@ enum class ColliderType {
 	Polygon
 };
 
+enum class ColliderFuncType {
+	Trigger = 0,
+	Rigibody,
+};
+
 std::ostream& operator<<(std::ostream& stream, ColliderType type);
 
 struct collider_resolution {
@@ -29,6 +34,7 @@ public:
 	static Ref<Collider2D> createCollider2D(ColliderType type);
 	~Collider2D();
 	ColliderType m_type;
+	ColliderFuncType m_func_type;
 protected:
 	Collider2D(ColliderType type);
 	friend class CollisionManager;

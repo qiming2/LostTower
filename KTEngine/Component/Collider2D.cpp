@@ -25,7 +25,9 @@ std::ostream& operator<<(std::ostream& stream, ColliderType type) {
 Collider2D::Collider2D(ColliderType type) :
 	Component()
 {
+	// Default Collider2D param
 	this->m_type = type;
+	m_func_type = ColliderFuncType::Trigger;
 }
 
 Ref<Collider2D> Collider2D::createCollider2D(ColliderType type)

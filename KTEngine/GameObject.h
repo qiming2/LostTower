@@ -4,6 +4,7 @@
 #include "IMGUI/imgui.h"
 #include "Window.h"
 #include "Component.h"
+#include "Collider2D.h"
 
 class GameObject
 {
@@ -30,9 +31,9 @@ public:
 	virtual void addComponent(Ref<Component> comp);
 	virtual void update(float dt);
 	virtual void imgui();
-	virtual void onTriggerEnter();
-	virtual void onTrigger();
-	virtual void onTriggerExit();
+	virtual void onTriggerEnter(Collider2D*);
+	virtual void onTrigger(Collider2D*);
+	virtual void onTriggerExit(Collider2D*);
 private:
 	std::vector<Ref<Component>> comps;
 };

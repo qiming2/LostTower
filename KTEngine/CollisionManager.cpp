@@ -1,3 +1,4 @@
+#include <algorithm>
 #include "CollisionManager.h"
 #include "CollisionDetectionAlgo.h"
 #include "GameObject.h"
@@ -63,12 +64,22 @@ void CollisionManager::update(float dt)
     // Basically just iterate through all 
     // colliders for now since there aren't many
     collider_resolution solver;
+    Collider2D* t1 = nullptr, *t2 = nullptr;
     for (size_t i = 0; i < transform_pass.size(); ++i) {
         for (size_t j = i + 1; j < transform_pass.size(); ++j) {
-            solver = k_col_algo::checkCollision(transform_pass[i], transform_pass[j]);
+            t1 = transform_pass[i];
+            t2 = transform_pass[j];
+            solver = k_col_algo::checkCollision(t1, t2);
             // resolve it right away
             if (solver.isCollided) {
-                transform_pass[i]->gameObject->transform.move(solver.slide_vec, solver.length + KEPSILON);
+                if (t1->m_func_type == ColliderFuncType::Trigger || t2->m_func_type == ColliderFuncType::Trigger) {
+                    t1->gameObject->onTrigger(t2);
+                    t2->gameObject->onTrigger(t1);
+                }
+                else {
+                    transform_pass[i]->gameObject->transform.move(solver.slide_vec, solver.length);
+                }
+                
             }
         }
     }

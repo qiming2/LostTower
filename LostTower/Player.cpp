@@ -19,11 +19,12 @@ namespace KPlayer {
 }
 
 Player::Player() :
-	GameObject()
+	GameObject("Player")
 {
+	
 	addComponent(SpriteRenderer::createSpriteRenderer());
 	addComponent(Animator::createAnimator(4));
-	addComponent(Collider2D::createCollider2D(ColliderType::Circle));
+	addComponent(Collider2D::createCollider2D(ColliderType::Polygon));
 	unsigned int texFlag = KTexture::CLAMP_TO_EDGE | KTexture::MAG_NEAREST;
 	Ref<Sprite> sprite = Sprite::createSprite("KTEngine\\Asset\\SpriteSheets\\sample_art\\Woodcutter\\Woodcutter_attack1.png", 5, texFlag);
 	Ref<Sprite> sprite1 = Sprite::createSprite("KTEngine\\Asset\\SpriteSheets\\sample_art\\Woodcutter\\Woodcutter_attack2.png", 5, texFlag);
@@ -42,10 +43,8 @@ Player::Player() :
 	animator->addAnimation(anime2, KPlayer::ATTACK_3);
 	animator->addAnimation(anime3, KPlayer::IDLE);
 	animator->setAnimation(KPlayer::IDLE, KAnimator::LOOPING);
-	// Add collision component
-	/*Ref<Sprite> sprite = Sprite::createSprite("LostTower\\Asset\\se_1.jpg", 0);
-	addComponent(SpriteRenderer::createSpriteRenderer(sprite));*/
-	speed = 5.0f;
+
+	speed = 200.0f;
 	transform.move(glm::vec3(0.0f, 3.0f, 0.0f), 250.0f);
 	transform.changeScale(glm::vec3(144.0f, 144.0f, 1.0f));
 }
@@ -57,20 +56,20 @@ Player::~Player()
 void Player::update(float dt)
 {
 	if (KeyListener::isKeyDown(GLFW_KEY_W) || KeyListener::isKeyDown(GLFW_KEY_UP)) {
-		transform.move(glm::vec3(0.0f, 1.0f, 0.0f), speed);
+		transform.move(glm::vec3(0.0f, 1.0f, 0.0f), speed * Window::getFrameRate());
 
 	}
 	else if (KeyListener::isKeyDown(GLFW_KEY_S) || KeyListener::isKeyDown(GLFW_KEY_DOWN)) {
-		transform.move(glm::vec3(0.0f, -1.0f, 0.0f), speed);
+		transform.move(glm::vec3(0.0f, -1.0f, 0.0f), speed * Window::getFrameRate());
 	}
 	else if (KeyListener::isKeyDown(GLFW_KEY_A) || KeyListener::isKeyDown(GLFW_KEY_LEFT)) {
-		transform.move(glm::vec3(-1.0f, 0.0f, 0.0f), speed);
+		transform.move(glm::vec3(-1.0f, 0.0f, 0.0f), speed * Window::getFrameRate());
 		if (transform.scale[0] > 0.0f) {
 			transform.scale[0] = -transform.scale[0];
 		}
 	}
 	else if (KeyListener::isKeyDown(GLFW_KEY_D) || KeyListener::isKeyDown(GLFW_KEY_RIGHT)) {
-		transform.move(glm::vec3(1.0f, 0.0f, 0.0f), speed);
+		transform.move(glm::vec3(1.0f, 0.0f, 0.0f), speed * Window::getFrameRate());
 		if (transform.scale[0] < 0.0f) {
 			transform.scale[0] = -transform.scale[0];
 		}
@@ -88,6 +87,6 @@ void Player::update(float dt)
 void Player::imgui()
 {
 
-	ImGui::DragFloat("Player Speed", &speed, 0.1f, 0.0f, 25.0f, "%.3f", ImGuiSliderFlags_None);
+	ImGui::DragFloat("Player Speed", &speed, 0.1f, 0.0f, 200.0f, "%.3f", ImGuiSliderFlags_None);
 
 }

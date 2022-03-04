@@ -9,4 +9,4 @@
 #define Ref std::shared_ptr
 #define BIT(x, y) ((x) & (1 << y))
 #define SET(x, y) ((x) | (1 << y))
-#define KEPSILON 0.001
+#define KEPSILON 0.0001
